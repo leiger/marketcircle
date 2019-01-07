@@ -1,0 +1,15 @@
+@import '../styles/variables';
+
+.card {
+  border: 1px solid $cardBorderColor;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
+
+  .cardHeader {
+
+  }
+  .cardContent {
+
+  }
+}

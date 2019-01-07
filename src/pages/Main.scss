@@ -1,0 +1,227 @@
+@import '../styles/variables';
+
+header {
+  display: flex;
+  background-color: $body-background;
+  margin: 0 50px;
+  padding: 30px 18px 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 30px;
+
+  @media only screen and (max-width: $smallScreen) {
+    flex-direction: column;
+    margin: 0;
+    padding: 14px;
+    height: 14px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+
+    @media only screen and (max-width: $smallScreen) {
+      width: 100%;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    img {
+      width: 150px;
+
+      @media only screen and (max-width: $smallScreen) {
+        width: 85px;
+      }
+    }
+  }
+
+  .navItems, .navButton {
+    @media only screen and (max-width: $smallScreen) {
+      display: none;
+    }
+  }
+
+  .navToggle {
+    display: none;
+
+    @media only screen and (max-width: $smallScreen) {
+      display: inline-block;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+  }
+
+  .navButton {
+    padding: 5px 30px;
+  }
+}
+
+.content {
+  width: 90%;
+  margin: 0 auto;
+
+  section {
+    margin-top: 50px;
+
+    @media only screen and (max-width: $smallScreen) {
+      margin-top: 0;
+    }
+  }
+
+  .col-50 {
+    flex: 1;
+    padding: 0 10px;
+    margin: 20px 0;
+
+    @media only screen and (max-width: $smallScreen) {
+      margin-bottom: 0;
+    }
+  }
+
+  .desc {
+    font-size: $descSize;
+    line-height: 1.5;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .introDetails {
+    display: flex;
+    margin-bottom: 20px;
+    .introLeft {
+      font-size: $h2Size;
+    }
+
+    @media only screen and (max-width: $smallScreen) {
+      flex-direction: column;
+    }
+  }
+
+  .introBtn {
+    font-size: 24px;
+    padding: 10px 60px;
+  }
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .bannerText {
+    margin: -80px 0 0 0;
+    font-size: 40px;
+    font-weight: 800;
+    color: #fff;
+
+    @media only screen and (max-width: $smallScreen) {
+      margin: -60px 0 26px 0;
+      font-size: 30px;
+    }
+  }
+}
+
+.content1 {
+  display: flex;
+
+  @media only screen and (max-width: $smallScreen) {
+    flex-direction: column;
+  }
+}
+
+.content2 {
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: $smallScreen) {
+    flex-direction: column;
+  }
+}
+
+.learnMore {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px;
+
+  @media only screen and (max-width: $smallScreen) {
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .learnMoreBtn {
+    margin-right: 50px;
+    font-size: 24px;
+    padding: 15px 25px;
+
+    @media only screen and (max-width: $smallScreen) {
+      margin-right: 0;
+    }
+  }
+  h2 {
+    max-width: 60%;
+    text-align: center;
+
+    @media only screen and (max-width: $smallScreen) {
+      max-width: 100%;
+    }
+  }
+}
+
+.customerStories {
+  padding: 0 50px;
+
+  @media only screen and (max-width: $smallScreen) {
+    padding: 0;
+  }
+
+  .customerStoriesTitle {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 10px;
+    margin: 0 5px 20px;
+    border-bottom: 1px solid $titleBorderColor;
+  }
+
+  .customerStoriesDetails {
+    display: flex;
+    justify-content: space-around;
+
+    @media only screen and (max-width: $smallScreen) {
+      flex-direction: column;
+    }
+  }
+
+  .customerCard {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    border-color: rgba(0, 0, 0, 0.09);
+    margin: 5px;
+    padding: 5px 10px 10px;
+
+    .customerCardImg {
+      width: 100%;
+    }
+    h4 {
+      margin: 10px 0;
+      color: $primary-color;
+      font-size: 24px;
+    }
+    .customerCardDetail {
+      color: #999;
+    }
+    .customerCardName {
+      margin: 0;
+      float: right;
+      color: #999;
+    }
+  }
+
+}

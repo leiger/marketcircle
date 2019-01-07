@@ -1,0 +1,41 @@
+@import "../../node_modules/normalize.css";
+@import "./variables";
+
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+h2 {
+  margin: 30px 0;
+  color: $h2Color;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+h3 {
+  color: $h3Color;
+}
+
+p {
+  margin: 30px 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: $smallScreen) {
+  h2 {
+    margin: 20px 0;
+    font-size: 28px;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+}
