@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import MediaQuery from 'react-responsive';
 
 import './Main.scss';
+
+import Mlogo from '../images/1x/Lorem Ipsum.png';
+import MBanner from '../images/1x/Banner.png';
+import MS01 from '../images/1x/S01.png';
+import MS02 from '../images/1x/S02.png';
+import MS03 from '../images/1x/S03.png';
+import MC02 from '../images/1x/02 image.png';
+import MC03 from '../images/1x/03 image.png';
+import MC04 from '../images/1x/04 image.png';
 import logo from '../images/2x/Lorem Ipsum@2x.png';
 import Banner from '../images/2x/Banner@2x.png';
 import S01 from '../images/2x/S01@2x.png';
@@ -23,7 +33,8 @@ class Main extends Component {
       navIcon: 'bars',
       navItems: ['Lorem', 'Lorem', 'Lorem', 'Lorem'],
       banner: {
-        img: Banner,
+        img_small: MBanner,
+        img_large: Banner,
         text: 'Lorem Ipsum'
       },
       introduction: {
@@ -34,42 +45,49 @@ class Main extends Component {
         left: {
           title: 'Sint occaecat cupidatat',
           detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-          img: C02
+          img_large: C02,
+          img_small: MC02
         },
         right: {
           title: 'Occaecat cupidatat non',
           detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-          img: C02
+          img_large: C02,
+          img_small: MC02
         }
       },
       content2: {
         title: 'Excepteur sint occaecat cupidatat dem',
         detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-        img: C03
+        img_large: C03,
+        img_small: MC03
       },
       content3: {
         title: 'Occaecat non proident',
         detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-        img: C04
+        img_large: C04,
+        img_small: MC04
       },
       customerStories: [
         {
           id: 1,
-          img: S01,
+          img_large: S01,
+          img_small: MS01,
           title: 'Eiusmod tempor',
           content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aspernatur at, blanditiis dolor ea, enim esse harum id non odio officia quaerat quam quisquam, ut. Dolor explicabo provident reiciendis.',
           name: 'accusantium'
         },
         {
           id: 2,
-          img: S02,
+          img_large: S02,
+          img_small: MS02,
           title: 'Eiusmod tempor',
           content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aspernatur at, blanditiis dolor ea, enim esse harum id non odio officia quaerat quam quisquam, ut. Dolor explicabo provident reiciendis.',
           name: 'accusantium'
         },
         {
           id: 3,
-          img: S03,
+          img_large: S03,
+          img_small: MS03,
           title: 'Eiusmod tempor',
           content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium aspernatur at, blanditiis dolor ea, enim esse harum id non odio officia quaerat quam quisquam, ut. Dolor explicabo provident reiciendis.',
           name: 'accusantium'
@@ -99,7 +117,14 @@ class Main extends Component {
         <header>
           {/*logo*/}
           <div className="title">
-            <h1><img src={logo} alt="logo"/></h1>
+            <h1>
+              <MediaQuery maxDeviceWidth={700}>
+                <img src={Mlogo} alt="logo"/>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={700}>
+                <img src={logo} alt="logo"/>
+              </MediaQuery>
+            </h1>
             <div onClick={this.toggleNav}>
               <FontAwesomeIcon className="navToggle" icon={navIcon}/>
             </div>
@@ -111,7 +136,12 @@ class Main extends Component {
 
         {/*banner*/}
         <section className="banner">
-          <img className="bannerImg" src={banner.img} alt="bannerImg"/>
+          <MediaQuery maxDeviceWidth={700}>
+            <img className="bannerImg" src={banner.img_small} alt="bannerImg"/>
+          </MediaQuery>
+          <MediaQuery minDeviceWidth={700}>
+            <img className="bannerImg" src={banner.img_large} alt="bannerImg"/>
+          </MediaQuery>
           <p className="bannerText">{banner.text}</p>
         </section>
 
@@ -130,7 +160,12 @@ class Main extends Component {
             <div className="col-50 content1Left">
               <h2>{content1.left.title}</h2>
               <p className="desc">{content1.left.detail}</p>
-              <img src={content1.left.img} alt="content1 img"/>
+              <MediaQuery maxDeviceWidth={700}>
+                <img src={content1.left.img_small} alt="content1 img"/>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={700}>
+                <img src={content1.left.img_large} alt="content1 img"/>
+              </MediaQuery>
             </div>
             <div className="col-50 content1Right">
               <h2>{content1.right.title}</h2>
@@ -147,7 +182,12 @@ class Main extends Component {
               <p className="desc">{content2.detail}</p>
             </div>
             <div className="col-50 content1Right">
-              <img src={content2.img} alt="content2 img"/>
+              <MediaQuery maxDeviceWidth={700}>
+                <img src={content2.img_small} alt="content1 img"/>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={700}>
+                <img src={content2.img_large} alt="content1 img"/>
+              </MediaQuery>
             </div>
           </section>
 
@@ -155,7 +195,12 @@ class Main extends Component {
           <section className="content3">
             <h2>{content3.title}</h2>
             <p className="desc">{content3.detail}</p>
-            <img src={content3.img} alt="content3 img"/>
+            <MediaQuery maxDeviceWidth={700}>
+              <img src={content3.img_small} alt="content1 img"/>
+            </MediaQuery>
+            <MediaQuery minDeviceWidth={700}>
+              <img src={content3.img_large} alt="content1 img"/>
+            </MediaQuery>
           </section>
 
           <section className="learnMore">
@@ -171,7 +216,12 @@ class Main extends Component {
                 customerStories.map(story => (
                   <Card key={story.id} className="customerCard">
                     <Card.Header className="customerCardHeader">
-                      <img className="customerCardImg" src={story.img} alt="a story"/>
+                      <MediaQuery maxDeviceWidth={700}>
+                        <img className="customerCardImg" src={story.img_small} alt="a story"/>
+                      </MediaQuery>
+                      <MediaQuery minDeviceWidth={700}>
+                        <img className="customerCardImg" src={story.img_large} alt="a story"/>
+                      </MediaQuery>
                       <h4>{story.title}</h4>
                     </Card.Header>
                     <Card.Content>
