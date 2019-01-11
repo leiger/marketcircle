@@ -19,7 +19,9 @@ header {
   .title {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     z-index: 100;
+    flex: 1;
 
     @media only screen and (max-width: $smallScreen) {
       width: 100%;
@@ -38,12 +40,6 @@ header {
     }
   }
 
-  .navItems, .navButton {
-    @media only screen and (max-width: $smallScreen) {
-      display: none;
-    }
-  }
-
   .navToggle {
     display: none;
 
@@ -54,9 +50,56 @@ header {
     }
   }
 
-  .navButton {
-    padding: 5px 30px;
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    flex: 2;
+
+    @media only screen and (max-width: $smallScreen) {
+      display: none;
+      position: absolute;
+      top: 42px;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      width: 100%;
+      flex-direction: column;
+      background-color: $navBackground;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+
+    .navItems {
+
+      @media only screen and (max-width: $smallScreen) {
+        margin-bottom: 10px;
+      }
+
+      .navItem {
+
+        @media only screen and (max-width: $smallScreen) {
+          padding: 10px;
+          border-bottom: 1px solid $navBorderColor;
+          color: $navColor;
+        }
+
+        @media (min-width: $smallScreen) and (max-width: $mediaScreen) {
+          padding: 0 10px;
+        }
+      }
+    }
+
+    .navButton {
+      display: inline-block;
+      padding: 5px 30px;
+
+      @media only screen and (max-width: $smallScreen) {
+        margin: 0 20px;
+      }
+    }
+
   }
+
 }
 
 .content {
@@ -110,6 +153,8 @@ header {
   }
 }
 
+//banner
+
 .banner {
   display: flex;
   flex-direction: column;
@@ -128,6 +173,8 @@ header {
   }
 }
 
+//content
+
 .content1 {
   display: flex;
 
@@ -145,6 +192,8 @@ header {
   }
 }
 
+// learnMore
+
 .learnMore {
   display: flex;
   justify-content: space-between;
@@ -153,8 +202,7 @@ header {
 
   @media only screen and (max-width: $smallScreen) {
     flex-direction: column;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 30px 0 !important;
   }
 
   .learnMoreBtn {
@@ -175,6 +223,8 @@ header {
     }
   }
 }
+
+//customerStories
 
 .customerStories {
   padding: 0 50px;
@@ -224,4 +274,14 @@ header {
     }
   }
 
+  .seeAll {
+    margin: 30px auto 50px;
+    text-align: center;
+    cursor: pointer;
+    color: $linkColor;
+
+    &:hover {
+      color: $linkHoverColor;
+    }
+  }
 }

@@ -1,7 +1,13 @@
 $primary-color: #6aab49;
 
 $body-background: #fff;
-$smallScreen: 768px;
+$navBackground: rgba(255, 255, 255, 0.9);
+$navBorderColor: hsla(0, 0%, 100%, .75);
+$navColor: #444d56;
+$navHoverColor: #999;
+
+$smallScreen: 700px;
+$mediaScreen: 860px;
 
 $h2Color: #444;
 $h2Size: 32px;
@@ -15,3 +21,6 @@ $fontColor: #555;
 
 $titleBorderColor: rgb(245, 166, 35);
 $cardBorderColor: #ccc;
+
+$linkColor: #339af0;
+$linkHoverColor: #228be6;

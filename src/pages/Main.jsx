@@ -31,42 +31,25 @@ class Main extends Component {
     super();
     this.state = {
       navIcon: 'bars',
-      navItems: ['Lorem', 'Lorem', 'Lorem', 'Lorem'],
-      banner: {
-        img_small: MBanner,
-        img_large: Banner,
-        text: 'Lorem Ipsum'
-      },
-      introduction: {
-        left: 'Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae',
-        right: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit'
-      },
-      content1: {
-        left: {
-          title: 'Sint occaecat cupidatat',
-          detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-          img_large: C02,
-          img_small: MC02
+      navItems: [
+        {
+          name: 'Lorem',
+          to: '/others'
         },
-        right: {
-          title: 'Occaecat cupidatat non',
-          detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-          img_large: C02,
-          img_small: MC02
+        {
+          name: 'Lorem',
+          to: '/others'
+        },
+        {
+          name: 'Lorem',
+          to: '/others'
+        },
+        {
+          name: 'Lorem',
+          to: '/others'
         }
-      },
-      content2: {
-        title: 'Excepteur sint occaecat cupidatat dem',
-        detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-        img_large: C03,
-        img_small: MC03
-      },
-      content3: {
-        title: 'Occaecat non proident',
-        detail: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?',
-        img_large: C04,
-        img_small: MC04
-      },
+      ],
+      navShow: false,
       customerStories: [
         {
           id: 1,
@@ -97,20 +80,27 @@ class Main extends Component {
   }
 
   toggleNav = () => {
-    if(this.state.navIcon === 'bars') {
+    if(this.state.navShow === false) {
       this.setState({
-        navIcon: 'times'
+        navIcon: 'times',
+        navShow: true
       });
     }
     else {
       this.setState({
-        navIcon: 'bars'
+        navIcon: 'bars',
+        navShow: false
       })
     }
   };
 
+  getMobileNavClasses = () => {
+    let classes = 'nav';
+    return this.state.navShow === true ? `${classes} show` : `${classes}`;
+  };
+
   render() {
-    const {navIcon, navItems: items, customerStories, banner, introduction, content1, content2, content3} = this.state;
+    const {navIcon, navItems: items, customerStories} = this.state;
     return (
       <React.Fragment>
         {/*header*/}
@@ -129,28 +119,29 @@ class Main extends Component {
               <FontAwesomeIcon className="navToggle" icon={navIcon}/>
             </div>
           </div>
-
-          <Nav className="navItems" items={items}/>
-          <Button className="navButton">Lorem</Button>
+          <div className={this.getMobileNavClasses()}>
+            <Nav className="navItems" items={items}/>
+            <Button className="navButton">Lorem</Button>
+          </div>
         </header>
 
         {/*banner*/}
         <section className="banner">
           <MediaQuery maxDeviceWidth={700}>
-            <img className="bannerImg" src={banner.img_small} alt="bannerImg"/>
+            <img className="bannerImg" src={MBanner} alt="bannerImg"/>
           </MediaQuery>
           <MediaQuery minDeviceWidth={700}>
-            <img className="bannerImg" src={banner.img_large} alt="bannerImg"/>
+            <img className="bannerImg" src={Banner} alt="bannerImg"/>
           </MediaQuery>
-          <p className="bannerText">{banner.text}</p>
+          <p className="bannerText">'Lorem Ipsum'</p>
         </section>
 
         <div className="content">
           {/*introduction*/}
           <section className="intro">
             <div className="introDetails">
-              <p className="col-50 introLeft">{introduction.left}</p>
-              <p className="col-50 desc">{introduction.right}</p>
+              <p className="col-50 introLeft">'Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae'</p>
+              <p className="col-50 desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit'</p>
             </div>
             <Button className="introBtn">Start 30 Days Trial</Button>
           </section>
@@ -158,48 +149,53 @@ class Main extends Component {
           {/*content1*/}
           <section className="content1">
             <div className="col-50 content1Left">
-              <h2>{content1.left.title}</h2>
-              <p className="desc">{content1.left.detail}</p>
+              <h2>'Sint occaecat cupidatat'</h2>
+              <p className="desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?'</p>
               <MediaQuery maxDeviceWidth={700}>
-                <img src={content1.left.img_small} alt="content1 img"/>
+                <img src={MC02} alt="content1 img"/>
               </MediaQuery>
               <MediaQuery minDeviceWidth={700}>
-                <img src={content1.left.img_large} alt="content1 img"/>
+                <img src={C02} alt="content1 img"/>
               </MediaQuery>
             </div>
             <div className="col-50 content1Right">
-              <h2>{content1.right.title}</h2>
-              <p className="desc">{content1.right.detail}</p>
-              <img src={content1.right.img} alt="content1 img"/>
+              <h2>'Occaecat cupidatat non'</h2>
+              <p className="desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?'</p>
+              <MediaQuery maxDeviceWidth={700}>
+                <img src={MC02} alt="content1 img"/>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={700}>
+                <img src={C02} alt="content1 img"/>
+              </MediaQuery>
             </div>
           </section>
 
           {/*content2*/}
           <section className="content2">
             <div className="col-50 content1Left">
-              <h2>{content2.title}</h2>
-              <p className="desc">{content2.detail}</p>
-              <p className="desc">{content2.detail}</p>
+              <h2>'Excepteur sint occaecat cupidatat dem'</h2>
+              <p className="desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?'</p>
+              <p className="desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?'</p>
             </div>
             <div className="col-50 content1Right">
               <MediaQuery maxDeviceWidth={700}>
-                <img src={content2.img_small} alt="content1 img"/>
+                <img src={MC03} alt="content1 img"/>
               </MediaQuery>
               <MediaQuery minDeviceWidth={700}>
-                <img src={content2.img_large} alt="content1 img"/>
+                <img src={C03} alt="content1 img"/>
               </MediaQuery>
             </div>
           </section>
 
           {/*content3*/}
           <section className="content3">
-            <h2>{content3.title}</h2>
-            <p className="desc">{content3.detail}</p>
+            <h2>'Occaecat non proident'</h2>
+            <p className="desc">'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias autem cum, deserunt eos error, et eum, id illo impedit molestiae molestias nam odio quia quibusdam ratione totam ut voluptas voluptatibus?'</p>
             <MediaQuery maxDeviceWidth={700}>
-              <img src={content3.img_small} alt="content1 img"/>
+              <img src={MC04} alt="content1 img"/>
             </MediaQuery>
             <MediaQuery minDeviceWidth={700}>
-              <img src={content3.img_large} alt="content1 img"/>
+              <img src={C04} alt="content1 img"/>
             </MediaQuery>
           </section>
 
@@ -232,7 +228,12 @@ class Main extends Component {
                 ))
               }
             </div>
-            <a href="#">See All</a>
+            <div className="seeAll">See All</div>
+          </section>
+
+          <section className="learnMore">
+            <h2>Excepteur denet al asumen der alumin et</h2>
+            <Button className="learnMoreBtn">Lorem Ipsum?</Button>
           </section>
         </div>
 

@@ -11,10 +11,14 @@
 
   .navItem {
     padding: 0 25px;
-    cursor: pointer;
 
-    &:hover {
-      color: #999;
+    a {
+      text-decoration: none;
+      color: $navColor;
+
+      &:hover {
+        color: $navHoverColor;
+      }
     }
   }
 }
