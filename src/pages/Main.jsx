@@ -133,7 +133,7 @@ class Main extends Component {
           <MediaQuery minDeviceWidth={700}>
             <img className="bannerImg" src={Banner} alt="bannerImg"/>
           </MediaQuery>
-          <p className="bannerText">'Lorem Ipsum'</p>
+          <p className="bannerText">Lorem Ipsum</p>
         </section>
 
         <div className="content">
